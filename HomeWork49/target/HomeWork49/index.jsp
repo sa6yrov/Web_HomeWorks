@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList" %>
 <html>
     <head>
         <title>Table</title>
@@ -9,22 +10,27 @@
             <caption>PRIME NUMBERS</caption>
             <%
                 boolean b = true;
-                String htmlCode = "";
-                for (int i = 2; i <= 100; i++) {
+                ArrayList<Integer> numbers = new ArrayList<>();
+                for (int i = 2; i <= 542; i++) {
                     for (int j = 2; j < i; j++) {
-                        htmlCode += "<tr>";
                         if (i % j == 0) {
                             b = false;
                             break;
                         }
                     }
-                    htmlCode += "</tr>";
-                    if (b){
-                            for (int l = 0; l < 5; l++) {
-                                htmlCode += "<td>" + i + "</td>";
-                            }
-                    }
+                    if (b) numbers.add(i);
                     else b = true;
+                }
+                String htmlCode = "";
+                int k = 0;
+                for (int i = 0; i < 10; i++) {
+                    htmlCode += "<tr>";
+                    for (int j = 0; j < 10; j++) {
+                        k++;
+                        htmlCode += "<th>" + numbers.get(k);
+                        htmlCode += "</th>";
+                    }
+                    htmlCode += "</tr>";
                 }
             %>
             <%= htmlCode %>

@@ -13,22 +13,29 @@ public class FirstServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter printWriter = resp.getWriter();
-        int num = 0;
+            printWriter.print("<html> <body> <table border=\"2\" cellpadding=\"8\" cellspacing=\"0\" align=\"center\">\n" +
+                    "<caption>PRIME NUMBERS</caption>");
         boolean b = true;
-        for (int i = 2; i <= 100; i++) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= 542; i++) {
             for (int j = 2; j < i; j++) {
                 if (i % j == 0) {
                     b = false;
                     break;
                 }
             }
-            if (b){
-                num = i;
-                i++;
-                break;
-            }
+            if (b) numbers.add(i);
             else b = true;
-            num = 0;
         }
+        int k = 0;
+        for (int i = 0; i < 10; i++) {
+            printWriter.print("<tr>");
+            for (int j = 0; j < 10; j++) {
+                k++;
+                printWriter.print("<th>" + numbers.get(k) + "</th>");
+            }
+            printWriter.print("</tr>");
+        }
+        printWriter.print("</table></body></html>");
     }
 }
