@@ -4,11 +4,11 @@
     <body>
         <div align="center">
         <form action = "${pageContext.request.contextPath}/boo" method="post">
-            <p align="center">Login</p>
+            <p>Login</p>
             <input type="text" name = "login"/>
-            <p align ="center">Password</p>
+            <p>Password</p>
             <input type="password" name="password">
-            <p align="center">E-mail</p>
+            <p>E-mail</p>
             <input type="text" name="email">
             <br><br>
             <input type="radio" name="gender" value="Male">Male</input>
