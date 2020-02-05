@@ -26,6 +26,5 @@ public class UserServlet extends HttpServlet{
         printWriter.print(user.getGender()+ "<br><br>");
         printWriter.print("</p></body></html>");
         System.out.println(user);
-
     }
 }
