@@ -17,8 +17,10 @@ public class FootballTeam implements Runnable{
     public  void run() {
 //        System.out.println(Thread.currentThread().getName() + "\n" + "Количество забитых голов: " + goals + "\n" +
 //                "Желтые карточки: " + yellowCard + "\n" + "Офсайды: " + inOffside);
-        Random rnd = new Random();
-        System.out.println(Thread.currentThread().getName() + "\n" + "Количество забитых голов: " + (Main.goals + rnd.nextInt(15)) +
-                "\n" + "Желтые карточки: " + (Main.yellowCard + rnd.nextInt(15)) + "\n" + "Офсайды: " + (Main.inOffside + rnd.nextInt(15)));
+        synchronized (this) {
+            Random rnd = new Random();
+            System.out.println(Thread.currentThread().getName() + "\n" + "Количество забитых голов: " + (Main.goals + rnd.nextInt(15)) +
+                    "\n" + "Желтые карточки: " + (Main.yellowCard + rnd.nextInt(15)) + "\n" + "Офсайды: " + (Main.inOffside + rnd.nextInt(15)));
+        }
     }
 }

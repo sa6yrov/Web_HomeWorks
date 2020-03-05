@@ -3,9 +3,9 @@ package com.company;
 import java.util.Random;
 
 public class Main {
-    static volatile int goals = 0;
-    static volatile int yellowCard = 0;
-    static volatile int inOffside = 0;
+    static int goals = 0;
+    static int yellowCard = 0;
+    static int inOffside = 0;
 
     public static void main(String[] args) {
         Random rnd = new Random();
