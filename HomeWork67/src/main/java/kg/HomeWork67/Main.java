@@ -1,5 +1,6 @@
 package kg.HomeWork67;
 
+import kg.HomeWork67.dao.ChampionshipDao;
 import kg.HomeWork67.dao.TeamDao;
 import kg.HomeWork67.entities.Championship;
 import kg.HomeWork67.entities.Country;
@@ -59,9 +60,18 @@ public class Main {
         create(team4);
         create(team5);
 
-        TeamDao teamDao = new TeamDao();
-        List<Team> teams = teamDao.getAllTeamInItalianChamp("Spain");
-        teams.stream().forEach(x -> System.out.println(x));
+        ChampionshipDao championshipDao = new ChampionshipDao();
+        System.out.println(championshipDao.getChampionships("Football Championship of Italy").get(0).getCountry().getName());
+        System.out.println(championshipDao.getChampionships("Football Championship of Italy").get(0).getSportType().getType());
+        for (Team t : championshipDao.getChampionships("Football Championship of Italy").get(0).getTeams()) {
+            System.out.println(t.getName());
+        }
+        System.err.println("-----------------------Stream---------------------");
+        List<Championship> championships = championshipDao.getChampionships("Football Championship of Italy");
+        championships.stream().map(
+                x -> x.getCountry().getName() + " | " + x.getSportType().getType() + " | "
+                        + x.getTeams().stream().map(n -> n.getName())).forEach(x -> System.out.println(x));
+
     }
 
 

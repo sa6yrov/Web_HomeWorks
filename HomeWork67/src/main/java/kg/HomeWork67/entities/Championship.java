@@ -20,12 +20,12 @@ public class Championship {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_country", referencedColumnName = "id")
     private Country country;
 
     @Column(name = "championship_name", nullable = false, unique = true)
-    private String ChampionshipName;
+    private String championshipName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_sport_type", referencedColumnName = "id")
@@ -36,7 +36,7 @@ public class Championship {
 
     public Championship(Country country, String championshipName, SportType sportType) {
         this.country = country;
-        this.ChampionshipName = championshipName;
+        this.championshipName = championshipName;
         this.sportType = sportType;
     }
 
@@ -45,7 +45,7 @@ public class Championship {
         return "Championship{" +
                 "id=" + id +
                 ", country=" + country +
-                ", ChampionshipName='" + ChampionshipName + '\'' +
+                ", ChampionshipName='" + championshipName + '\'' +
                 ", sportType=" + sportType +
                 ", teams=" + teams +
                 '}';
