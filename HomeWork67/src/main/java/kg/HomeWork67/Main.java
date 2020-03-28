@@ -61,13 +61,13 @@ public class Main {
         create(team5);
 
         ChampionshipDao championshipDao = new ChampionshipDao();
-        System.out.println(championshipDao.getChampionships("Football Championship of Italy").get(0).getCountry().getName());
-        System.out.println(championshipDao.getChampionships("Football Championship of Italy").get(0).getSportType().getType());
-        for (Team t : championshipDao.getChampionships("Football Championship of Italy").get(0).getTeams()) {
+        System.out.println(championshipDao.getChampionships(italianChampionshipF.getChampionshipName()).get(0).getCountry().getName());
+        System.out.println(championshipDao.getChampionships(italianChampionshipF.getChampionshipName()).get(0).getSportType().getType());
+        for (Team t : championshipDao.getChampionships(italianChampionshipF.getChampionshipName()).get(0).getTeams()) {
             System.out.println(t.getName());
         }
         System.err.println("-----------------------Stream---------------------");
-        List<Championship> championships = championshipDao.getChampionships("Football Championship of Italy");
+        List<Championship> championships = championshipDao.getChampionships(italianChampionshipF.getChampionshipName());
         championships.stream().map(
                 x -> x.getCountry().getName() + " | " + x.getSportType().getType() + " | "
                         + x.getTeams().stream().map(n -> n.getName())).forEach(x -> System.out.println(x));
