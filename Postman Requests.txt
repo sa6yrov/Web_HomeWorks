@@ -1,0 +1,67 @@
+Create:
+
+post :   http://localhost:8080/computer
+
+body: 
+{
+	"cpu": "AMD Ryzen 7 3700",
+	"gpu": "ASUS rtx2070 Super",
+	"ramCapacity": "32 gb",
+	"hddCapacity": "2 tb",
+	"powerSupplyCapacity": "850 W",
+	"monitor": "ASUS VG278"
+}
+
+
+{
+	"cpu": "Intel Core i9 10600K",
+	"gpu": "Asus rtx3080 Ti ROG strix OC Edition Mega Super",
+	"ramCapacity": "64 gb",
+	"hddCapacity": "10 tb",
+	"powerSupplyCapacity": "1000 W",
+	"monitor": "ASUS PG27 ROG Strix"
+}
+
+---------------------------------------------------
+GetById
+
+Get : http://localhost:8080/computer/1
+
+body: 
+{
+    "id": 1,
+    "cpu": "AMD Ryzen 7 3700",
+    "gpu": "ASUS rtx2070 Super",
+    "ramCapacity": "32 gb",
+    "hddCapacity": "2 tb",
+    "powerSupplyCapacity": "850 W",
+    "monitor": "ASUS VG278"
+}
+--------------------------------------------
+GetAll
+
+Get: http://localhost:8080/computer/list
+
+body: 
+[
+    {
+        "id": 1,
+        "cpu": "AMD Ryzen 7 3700",
+        "gpu": "ASUS rtx2070 Super",
+        "ramCapacity": "32 gb",
+        "hddCapacity": "2 tb",
+        "powerSupplyCapacity": "850 W",
+        "monitor": "ASUS VG278"
+    },
+    {
+        "id": 2,
+        "cpu": "Intel Core i9 10600K",
+        "gpu": "Asus rtx3080 Ti ROG strix OC Edition Mega Super",
+        "ramCapacity": "64 gb",
+        "hddCapacity": "10 tb",
+        "powerSupplyCapacity": "1000 W",
+        "monitor": "ASUS PG27 ROG Strix"
+    }
+]
+
+
