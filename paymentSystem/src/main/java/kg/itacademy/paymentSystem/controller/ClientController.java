@@ -1,6 +1,6 @@
 package kg.itacademy.paymentSystem.controller;
 
-import kg.itacademy.paymentSystem.Services.ClientService;
+import kg.itacademy.paymentSystem.services.ClientService;
 import kg.itacademy.paymentSystem.entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

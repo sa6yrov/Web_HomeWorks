@@ -1,6 +1,6 @@
-package kg.itacademy.paymentSystem.Services.Implementations;
+package kg.itacademy.paymentSystem.services.Implementations;
 
-import kg.itacademy.paymentSystem.Services.ClientService;
+import kg.itacademy.paymentSystem.services.ClientService;
 import kg.itacademy.paymentSystem.entities.Client;
 import kg.itacademy.paymentSystem.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;

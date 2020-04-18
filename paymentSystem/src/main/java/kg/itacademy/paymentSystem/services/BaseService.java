@@ -1,8 +1,8 @@
-package kg.itacademy.paymentSystem.Services;
+package kg.itacademy.paymentSystem.services;
 
 import java.util.List;
 
-public interface BaseService<T> {
+public interface BaseService<T>{
     T getById(Long id);
 
     List<T> getAll();

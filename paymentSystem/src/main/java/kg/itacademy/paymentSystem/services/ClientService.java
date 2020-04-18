@@ -1,4 +1,4 @@
-package kg.itacademy.paymentSystem.Services;
+package kg.itacademy.paymentSystem.services;
 
 import kg.itacademy.paymentSystem.entities.Client;
 

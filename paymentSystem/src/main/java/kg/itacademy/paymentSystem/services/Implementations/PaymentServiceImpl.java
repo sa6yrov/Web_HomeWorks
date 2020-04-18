@@ -1,7 +1,8 @@
-package kg.itacademy.paymentSystem.Services.Implementations;
+package kg.itacademy.paymentSystem.services.Implementations;
 
-import kg.itacademy.paymentSystem.Services.AccountService;
-import kg.itacademy.paymentSystem.Services.PaymentService;
+import kg.itacademy.paymentSystem.exceptions.WrongCodeWordException;
+import kg.itacademy.paymentSystem.services.AccountService;
+import kg.itacademy.paymentSystem.services.PaymentService;
 import kg.itacademy.paymentSystem.entities.Account;
 import kg.itacademy.paymentSystem.entities.Payment;
 import kg.itacademy.paymentSystem.enums.Status;
@@ -56,7 +57,8 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public Payment confirmPayment(Message key) {
+    public Payment confirmPayment(Message key, String codeWord) throws Exception {
+        if(!paymentTemp.getAccountFrom().getClient().getCodeWord().equals(codeWord)) throw new WrongCodeWordException();
         Status status = message.getKey().equals(key.getKey()) ? Status.SUCCESS : Status.FAILED;
         paymentTemp.setStatus(status);
         if (paymentTemp.getStatus().equals(Status.SUCCESS)) {
