@@ -75,6 +75,8 @@ public class PaymentServiceImpl implements PaymentService {
 }
 
 
+
+
     @Override
     public List<Payment> findAllByStatus(Status status) {
         return paymentRepository.findAllByStatus(status);

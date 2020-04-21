@@ -14,4 +14,5 @@ public interface PaymentService extends BaseService<Payment>{
 
     Payment confirmPayment(Message key, String codeWord) throws Exception;
 
+
 }
