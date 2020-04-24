@@ -1,5 +1,6 @@
 package kg.itacademy.paymentSystem.controller;
 
+import kg.itacademy.paymentSystem.models.ResponseMessage;
 import kg.itacademy.paymentSystem.services.AccountService;
 import kg.itacademy.paymentSystem.entities.Account;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,18 @@ public class AccountController {
     }
 
     @PostMapping
-    public Account create(@RequestBody Account account){
-        return accountService.save(account);
+    public ResponseMessage create(@RequestBody Account account){
+        try{
+            return ResponseMessage.builder()
+                    .success(true)
+                    .json(accountService.save(account))
+                    .build();
+        }catch (Exception e){
+            return ResponseMessage.builder()
+                    .success(false)
+                    .message(e.getMessage())
+                    .build();
+        }
     }
 
     @GetMapping("/{id}")

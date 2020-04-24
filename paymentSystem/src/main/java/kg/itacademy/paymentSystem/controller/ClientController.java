@@ -1,5 +1,6 @@
 package kg.itacademy.paymentSystem.controller;
 
+import kg.itacademy.paymentSystem.models.ResponseMessage;
 import kg.itacademy.paymentSystem.services.ClientService;
 import kg.itacademy.paymentSystem.entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,18 @@ public class ClientController {
     }
 
     @PostMapping
-    public Client create(@RequestBody Client client){
-        return clientService.save(client);
+    public ResponseMessage create(@RequestBody Client client){
+        try{
+            return ResponseMessage.builder()
+                    .success(true)
+                    .json(clientService.save(client))
+                    .build();
+        }catch (Exception e){
+            return ResponseMessage.builder()
+                    .success(false)
+                    .message(e.getMessage())
+                    .build();
+        }
     }
 
     @GetMapping("/{id}")

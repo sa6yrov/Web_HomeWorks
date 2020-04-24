@@ -21,8 +21,8 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "account_number")
-    String accountNumber;
+    @Column(name = "requisite")
+    String requisite;
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id")

@@ -46,6 +46,8 @@ public class Payment {
     @Column(name = "currency")
     Currency currency;
 
+    @Column(name = "confirmation_code")
+    String confirmationCode;
 
 
 

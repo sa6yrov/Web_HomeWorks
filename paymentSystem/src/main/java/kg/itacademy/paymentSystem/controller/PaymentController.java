@@ -1,9 +1,9 @@
 package kg.itacademy.paymentSystem.controller;
 
+import kg.itacademy.paymentSystem.models.ConfirmationCodeModel;
 import kg.itacademy.paymentSystem.models.ResponseMessage;
 import kg.itacademy.paymentSystem.services.PaymentService;
 import kg.itacademy.paymentSystem.entities.Payment;
-import kg.itacademy.paymentSystem.models.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +21,22 @@ public class PaymentController {
     }
 
     @PostMapping
-    public Message create(@RequestBody Payment payment){
-        return paymentService.createPayment(payment);
+    public ResponseMessage create(@RequestBody Payment payment){
+        Payment p = paymentService.createPayment(payment);
+        try{
+            return ResponseMessage.builder()
+                    .success(true)
+                    .json(ConfirmationCodeModel.builder()
+                            .paymentId(p.getId())
+                            .confirmationCode(p.getConfirmationCode())
+                            .build())
+                    .build();
+        }catch (Exception e){
+            return ResponseMessage.builder()
+                    .success(false)
+                    .message(e.getMessage())
+                    .build();
+        }
     }
 
     @GetMapping("/{id}")
@@ -31,7 +45,7 @@ public class PaymentController {
     }
 
     @PostMapping("/confirm")
-    public ResponseMessage confirm(@RequestBody Message key, @RequestHeader String codeWord){
+    public ResponseMessage confirm(@RequestBody ConfirmationCodeModel key, @RequestHeader String codeWord){
         try {
             return ResponseMessage.builder()
                     .success(true)
